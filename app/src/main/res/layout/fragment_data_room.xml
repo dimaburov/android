@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="-2dp">
+
+
+        <TextView
+            android:id="@+id/textWallpaper"
+            android:layout_width="151dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:gravity="bottom"
+            android:text="@string/wallpaper"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+            app:layout_constraintHorizontal_bias="0.613"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWidthRoom2" />
+
+        <EditText
+            android:id="@+id/editWidthRoom"
+            android:layout_width="105dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/measuringWid"
+            app:layout_constraintTop_toBottomOf="@+id/editHeightRoom" />
+
+        <TextView
+            android:id="@+id/textWidthRoom2"
+            android:layout_width="152dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="28dp"
+            android:gravity="bottom"
+            android:text="@string/widthRoom"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editWidthRoom"
+            app:layout_constraintHorizontal_bias="0.562"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWidthRoom" />
+
+        <TextView
+            android:id="@+id/measuringWid"
+            android:layout_width="49dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/utils_m"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/measuringHeg" />
+
+        <EditText
+            android:id="@+id/editLengthRoom"
+            android:layout_width="107dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/measuringLen"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textWidthRoom"
+            android:layout_width="151dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:gravity="bottom"
+            android:text="@string/heightRoom"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editHeightRoom"
+            app:layout_constraintHorizontal_bias="0.569"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textLengthRoom" />
+
+        <EditText
+            android:id="@+id/editHeightRoom"
+            android:layout_width="107dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/measuringHeg"
+            app:layout_constraintTop_toBottomOf="@+id/editLengthRoom" />
+
+        <TextView
+            android:id="@+id/textLengthRoom"
+            android:layout_width="151dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:gravity="bottom"
+            android:text="Длина комнаты"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editLengthRoom"
+            app:layout_constraintHorizontal_bias="0.544"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/measuringHeg"
+            android:layout_width="49dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/utils_m"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/measuringLen" />
+
+        <TextView
+            android:id="@+id/measuringLen"
+            android:layout_width="49dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="bottom"
+            android:text="@string/utils_m"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editBoardCount"
+            android:layout_width="87dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintEnd_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/editBoardSize" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:gravity="bottom"
+            android:text="см*см"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <EditText
+            android:id="@+id/editBoardSize"
+            android:layout_width="85dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:gravity="bottom"
+            android:inputType="textPersonName"
+            android:text="150*23"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="84dp"
+            android:text="@string/count_sht"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="107dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/countBoard"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editBoardCount"
+            app:layout_constraintHorizontal_bias="0.61"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="75dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:gravity="bottom"
+            android:text="@string/sizeBoard"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editBoardSize"
+            app:layout_constraintHorizontal_bias="0.633"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <Button
+            android:id="@+id/buttonAddMaterial"
+            android:layout_width="187dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/addMaterial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="79dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:text="@string/laminat"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="142dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="357dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.814"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWallpaper">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWallpaper">
+
+            <RadioButton
+                android:id="@+id/radioButtonPar"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="@string/laminat" />
+
+            <RadioButton
+                android:id="@+id/radioButtonLam"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:text="@string/linolium" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="77dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="108dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editWidthRoom">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="71dp"
+                android:layout_height="24dp"
+                android:text="1 м" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="72dp"
+                android:layout_height="22dp"
+                android:text="50 см" />
+        </RadioGroup>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
