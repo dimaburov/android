@@ -16,4 +16,7 @@
     <string name="utils_m">м</string>
     <string name="utils_sm">см</string>
     <string name="count_sht">шт</string>
+    <string name="nameMaterial">Название материала</string>
+    <string name="utilsMaterial">Еденицы измерения</string>
+    <string name="countMaterial">Кол-во материала</string>
 </resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="886dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="-2dp">
+
+        <EditText
+            android:id="@+id/materialCount"
+            android:layout_width="168dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/unitsMeasurement" />
+
+        <EditText
+            android:id="@+id/nameMaterial"
+            android:layout_width="171dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="164dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="155dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="172dp"
+            android:text="@string/nameMaterial"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/nameMaterial"
+            app:layout_constraintHorizontal_bias="0.63"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/unitsMeasurement"
+            android:layout_width="170dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameMaterial" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="163dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/countMaterial"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/materialCount"
+            app:layout_constraintHorizontal_bias="0.705"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <Button
+            android:id="@+id/saveMaterial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.943"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCount"
+            app:layout_constraintVertical_bias="0.111" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="153dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/utilsMaterial"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/unitsMeasurement"
+            app:layout_constraintHorizontal_bias="0.631"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

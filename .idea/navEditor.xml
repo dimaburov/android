@@ -13,13 +13,39 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-61" />
-                            <option name="y" value="-125" />
+                            <option name="x" value="-144" />
+                            <option name="y" value="-122" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_dataRoomFragment_to_materialRoomFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_dataRoomFragment_to_titleFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="materialRoomFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="72" />
+                            <option name="y" value="-118" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_materialRoomFragment_to_dataRoomFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

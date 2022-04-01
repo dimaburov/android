@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dataRoomFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
+        <action
+            android:id="@+id/action_dataRoomFragment_to_materialRoomFragment"
+            app:destination="@id/materialRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/titleFragment"
@@ -21,6 +24,14 @@
         tools:layout="@layout/fragment_title" >
         <action
             android:id="@+id/action_titleFragment_to_dataRoomFragment"
+            app:destination="@id/dataRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/materialRoomFragment"
+        android:name="com.example.firstprogramkotlin.materialroom.MaterialRoomFragment"
+        android:label="MaterialRoomFragment" >
+        <action
+            android:id="@+id/action_materialRoomFragment_to_dataRoomFragment"
             app:destination="@id/dataRoomFragment" />
     </fragment>
 </navigation>

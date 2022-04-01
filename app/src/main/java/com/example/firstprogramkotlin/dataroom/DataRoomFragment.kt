@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.firstprogramkotlin.R
 import com.example.firstprogramkotlin.database.InitDatabase
 import com.example.firstprogramkotlin.databinding.FragmentDataRoomBinding
+import com.example.firstprogramkotlin.title.TitleAdapter
 
 class DataRoomFragment : Fragment() {
     private lateinit var viewModel: DataRoomViewModel
@@ -31,14 +33,32 @@ class DataRoomFragment : Fragment() {
         val dao = InitDatabase.getInstance(application).getRoomDao()
         val viewModelFactory = DataRoomViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DataRoomViewModel::class.java)
+
+        val adapter = AdapterMaterial(
+            viewModel::deleteMaterial
+        )
+
+        binding.itemMaterial.adapter = adapter
+
+        //Добавления материала
+        binding.buttonAddMaterial.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_dataRoomFragment_to_materialRoomFragment)
+        }
+
+        viewModel.materials.observe(viewLifecycleOwner, Observer { materials ->
+            if(materials != null){
+                adapter.data = materials
+            }
+        })
+
         //Прописать все фрагменты с окна для сохранения
         var checkF: Boolean = true
         binding.buttonSave.setOnClickListener {
             checkF = true
             //Добавляем проверку вводимого
             if (binding.editLengthRoom.text.toString().equals("") ||
-                    binding.editHeightRoom.text.toString().equals("") ||
-                    binding.editWidthRoom.text.toString().equals(""))
+                binding.editHeightRoom.text.toString().equals("") ||
+                binding.editWidthRoom.text.toString().equals(""))
                 checkF = false
             if (binding.radioButton.isChecked == false && binding.radioButton2.isChecked == false)
                 checkF = false
@@ -49,7 +69,7 @@ class DataRoomFragment : Fragment() {
             if (binding.radioButtonPar.isChecked == true){
                 if (binding.editBoardSize.text.toString().equals("")||
                     binding.editBoardCount.text.toString().equals(""))
-                        checkF = false
+                    checkF = false
             }
 
 

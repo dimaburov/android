@@ -84,7 +84,7 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
                 val action = R.id.action_titleFragment_to_dataRoomFragment
                 it.findNavController().navigate(action)
                 //Тестово задаём поле
-                R.id.editHeightRoom = item.height
+//                R.id.editHeightRoom = item.height
             }
         }
 

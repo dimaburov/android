@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.firstprogramkotlin.database.RoomDao
 import com.example.firstprogramkotlin.database.Apartment
+import com.example.firstprogramkotlin.database.Material
 import kotlinx.coroutines.*
 
 class DataRoomViewModel(
@@ -16,9 +17,9 @@ class DataRoomViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val rooms = dao.getAllRoom()
+    val materials = dao.getAllMaterial()
 
-    var steps = ArrayList<Apartment>()
+//    var steps = ArrayList<Apartment>()
 
     private var roomNow = MutableLiveData<Apartment?>()
 
@@ -60,7 +61,7 @@ class DataRoomViewModel(
             newRoom.utilsMSm = checkUtilsMOrSM
             newRoom.countBoard = boardCount
             insert(newRoom)
-            steps.add(newRoom)
+//            steps.add(newRoom)
             _navigateAfterNewRecipe.value = true
         }
     }
@@ -99,5 +100,18 @@ class DataRoomViewModel(
 
     fun doneNavigating(){
         _navigateAfterNewRecipe.value = false
+    }
+
+
+    fun deleteMaterial(material: Material){
+        uiScope.launch {
+            removeMaterial(material)
+        }
+    }
+
+    private suspend fun removeMaterial(material: Material) {
+        withContext(Dispatchers.IO){
+            dao.deleteItemMaterial(material)
+        }
     }
 }
