@@ -91,6 +91,12 @@ class DataRoomFragment : Fragment() {
                     lenght, height, width, checkUtilsFloorLamOrLin,
                     checkUtilsMOrSM, size, boardCount
                 )
+
+                //test
+                //test связь двух таблиц
+                viewModel.addMaterialInMaterialBasic()
+//            viewModel.onClearJob()
+                viewModel.onClearMaterial()
             }
             else {
                 val duration = Toast.LENGTH_SHORT
@@ -107,6 +113,7 @@ class DataRoomFragment : Fragment() {
                     viewModel.doneNavigating()
                 }
             })
+
         }
 
         return binding.root

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,23 +33,41 @@ class MaterialRoomFragment : Fragment() {
         val viewModelFactory = MaterialRoomViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MaterialRoomViewModel::class.java)
 
-
+        var checkF: Boolean = true
         binding.saveMaterial.setOnClickListener {
-            //Добавить проверку вводимого
-            val nameMaterial = binding.nameMaterial.text.toString()
-            val utilsMaterial = binding.unitsMeasurement.text.toString()
-            val countMaterial = binding.materialCount.text.toString().toInt()
+            //Проверка вводимого
+            checkF = true
+            if (binding.nameMaterial.text.toString().equals("") ||
+                binding.unitsMeasurement.text.toString().equals("") ||
+                binding.materialCount.text.toString().equals(""))
+                    checkF = false
 
-            viewModel.onSaveMaterial(
-                nameMaterial, utilsMaterial, countMaterial
-            )
+            if (checkF){
+                val nameMaterial = binding.nameMaterial.text.toString()
+                val utilsMaterial = binding.unitsMeasurement.text.toString()
+                val countMaterial = binding.materialCount.text.toString().toInt()
+                // save item material
+                viewModel.onSaveMaterial(
+                    nameMaterial, utilsMaterial, countMaterial
+                )
+                //save material basic
+//                viewModel.onSaveMaterialBasic(
+//                    nameMaterial, utilsMaterial, countMaterial
+//                )
 
-            viewModel.navigateAfterNewRecipe.observe(viewLifecycleOwner, Observer { navigate ->
-                if (navigate!!){
-                    this.findNavController().navigateUp()
-                    viewModel.doneNavigating()
-                }
-            })
+                viewModel.navigateAfterNewRecipe.observe(viewLifecycleOwner, Observer { navigate ->
+                    if (navigate!!){
+                        this.findNavController().navigateUp()
+                        viewModel.doneNavigating()
+                    }
+                })
+            }
+            else{
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(context, "Не все поля заполнены", duration)
+                toast.show()
+            }
+
         }
 
         return binding.root

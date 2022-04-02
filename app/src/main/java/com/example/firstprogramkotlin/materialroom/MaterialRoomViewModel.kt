@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.firstprogramkotlin.database.Apartment
 import com.example.firstprogramkotlin.database.Material
+import com.example.firstprogramkotlin.database.MaterialBasic
 import com.example.firstprogramkotlin.database.RoomDao
 import kotlinx.coroutines.*
 
@@ -27,10 +28,10 @@ class MaterialRoomViewModel(val dao: RoomDao,
         get() = _navigateAfterNewRecipe
 
     init{
-        initRoomNow()
+        initMaterialNow()
     }
 
-    private fun initRoomNow() {
+    private fun initMaterialNow() {
         uiScope.launch {
             materialNow.value = getMaterialNowFromDao()
         }
@@ -87,5 +88,24 @@ class MaterialRoomViewModel(val dao: RoomDao,
 
     fun doneNavigating(){
         _navigateAfterNewRecipe.value = false
+    }
+
+//---------- MATERIAL Basic -----------
+    //Передавать сюда все парамеры комнаты
+    fun onSaveMaterialBasic(name:String, utils:String, count:Int){
+        uiScope.launch {
+            val newMaterial = MaterialBasic()
+            newMaterial.materialName = name
+            newMaterial.materialUtils = utils
+            newMaterial.materialCount = count
+            insertBasic(newMaterial)
+            _navigateAfterNewRecipe.value = true
+        }
+    }
+
+    private suspend fun insertBasic(newMaterial: MaterialBasic) {
+        withContext(Dispatchers.IO){
+            dao.insertMaterialBasic(newMaterial)
+        }
     }
 }

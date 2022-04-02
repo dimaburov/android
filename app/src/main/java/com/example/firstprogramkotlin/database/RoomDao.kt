@@ -48,4 +48,32 @@ interface RoomDao {
 
     @Delete
     fun deleteItemMaterial(material: Material)
+
+    // base - Material Basic
+    @Insert
+    fun insertMaterialBasic(materialBasic: MaterialBasic)
+
+    @Update
+    fun updateMaterialBasic(materialBasic: MaterialBasic)
+
+    @Query("SELECT * FROM material_basic_room WHERE id_material = :key")
+    fun getMaterialBasic(key: Long): MaterialBasic?
+
+    @Query("SELECT * FROM material_basic_room ORDER BY id_material DESC")
+    fun getAllMaterialBasic(): LiveData<List<MaterialBasic>>
+
+    @Query("SELECT * FROM material_basic_room ORDER BY id_material DESC LIMIT 1")
+    fun MaterialBasicNow(): MaterialBasic?
+
+    @Query("DELETE FROM material_basic_room")
+    fun clearMaterialBasic()
+
+    @Delete
+    fun deleteItemMaterialBasic(materialBasic: MaterialBasic)
+
+    //TEST
+    @Query("INSERT INTO material_basic_room " +
+            "SELECT * FROM material_room")
+    fun addMaterialIntoMaterialBasic()
+
 }

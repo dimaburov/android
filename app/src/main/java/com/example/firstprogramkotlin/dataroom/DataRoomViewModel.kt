@@ -23,14 +23,17 @@ class DataRoomViewModel(
 
     private var roomNow = MutableLiveData<Apartment?>()
 
+    private var materialNow = MutableLiveData<Material?>()
+
     private val _navigateAfterNewRecipe= MutableLiveData<Boolean>()
     val navigateAfterNewRecipe: LiveData<Boolean>
         get() = _navigateAfterNewRecipe
 
     init{
         initRoomNow()
+        initMaterialNow()
     }
-
+//----------  ROOM  -----------
     private fun initRoomNow() {
         uiScope.launch {
             roomNow.value = getRoomNowFromDao()
@@ -42,6 +45,10 @@ class DataRoomViewModel(
             var room = dao.getRoomNow()
             return@withContext room
         }
+    }
+
+    fun onClearJob(){
+        onCleared()
     }
 
     override fun onCleared(){
@@ -97,6 +104,35 @@ class DataRoomViewModel(
             dao.clear()
         }
     }
+//--------  MATERIAL  -----------
+
+
+    private fun initMaterialNow() {
+        uiScope.launch {
+            materialNow.value = getMaterialNowFromDao()
+        }
+    }
+
+    private suspend fun getMaterialNowFromDao(): Material? {
+        return withContext(Dispatchers.IO){
+            var material = dao.MaterialNow()
+            return@withContext material
+        }
+    }
+
+    fun onClearMaterial(){
+        uiScope.launch {
+            clearMaterial()
+            materialNow.value=null
+        }
+    }
+
+    private suspend fun clearMaterial(){
+        withContext(Dispatchers.IO){
+            dao.clearMaterial()
+        }
+    }
+
 
     fun doneNavigating(){
         _navigateAfterNewRecipe.value = false
@@ -112,6 +148,19 @@ class DataRoomViewModel(
     private suspend fun removeMaterial(material: Material) {
         withContext(Dispatchers.IO){
             dao.deleteItemMaterial(material)
+        }
+    }
+
+    //TEST MATERIAL - MATERIAL BASIC
+    fun addMaterialInMaterialBasic(){
+        uiScope.launch {
+            addMaterialBasic()
+        }
+    }
+
+    private suspend fun addMaterialBasic(){
+        withContext(Dispatchers.IO){
+            dao.addMaterialIntoMaterialBasic()
         }
     }
 }
