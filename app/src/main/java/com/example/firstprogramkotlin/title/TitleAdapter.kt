@@ -58,7 +58,8 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
 
     class TitleAdapter(
         private val deleteOnClickListener: (Apartment) -> Unit,
-        private val editOnClickListener: (Apartment) -> Unit
+        private val editOnClickListener: (Apartment) -> Unit,
+        private val moveDataMaterialBasicInMaterial: (Apartment) -> Unit
     ): RecyclerView.Adapter<TitleViewHolder>() {
 
         var data = listOf<Apartment>()
@@ -78,6 +79,9 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
 
             holder.countMaterial.text = "Кол-во материалов: " + item.countMaterial
             holder.updateItemButton.setOnClickListener {
+                //Вывод редактируемых материалов
+                moveDataMaterialBasicInMaterial(item)
+                //Переход на страницу редактирования
                 val action = R.id.action_titleFragment_to_dataRoomFragment
                 it.findNavController().navigate(action)
             }

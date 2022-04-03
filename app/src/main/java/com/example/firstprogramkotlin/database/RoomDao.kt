@@ -76,7 +76,6 @@ interface RoomDao {
     @Delete
     fun deleteItemMaterialBasic(materialBasic: MaterialBasic)
 
-    //TEST
     @Query("INSERT INTO material_basic_room " +
             "SELECT * FROM material_room")
     fun addMaterialIntoMaterialBasic()
@@ -92,5 +91,18 @@ interface RoomDao {
     //Определяем кол-во материалов добавленных к комнате
     @Query("SELECT COUNT(*) FROM material_basic_room WHERE roomId = :id_apartament")
     fun getCountMaterialInApartament(id_apartament: Long):Int
+
+    //Запрос переноса материалов из общей таблицы в отображаемую
+    @Query("INSERT INTO material_room " +
+            "SELECT * FROM material_basic_room WHERE roomId = :id_room")
+    fun moveMaterialBasicInMaterial(id_room: Long)
+
+    //Удаляем у перенесённых записей связь с таблицей комнат
+    @Query("UPDATE material_room SET roomId = 0")
+    fun deleteValueRoomIDInMaterial()
+
+    //Удаляем перенесённые материалыиз основной таблицы
+    @Query("DELETE FROM material_basic_room WHERE roomId = :id_room")
+    fun clearMoveMaterialBasicInMaterial(id_room: Long)
 
 }

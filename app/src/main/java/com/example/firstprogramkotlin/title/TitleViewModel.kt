@@ -79,6 +79,24 @@ class TitleViewModel(
         _navigateAfterUpdateRoom.value = false
     }
 
+    //Передаём по ключу материалы из общей таблицы в отображаемую
+    //Удаляем эти материалы из общей таблицы
+    fun getMaterialOutMaterialBasic(apartment: Apartment){
+        uiScope.launch {
+            createDataMaterialOutMaterialBasic(apartment)
+        }
+    }
+
+    private suspend fun createDataMaterialOutMaterialBasic(apartment: Apartment){
+        withContext(Dispatchers.IO){
+            //Запрос - по id ереносим материалы из одной таблицы в другую
+            dao.moveMaterialBasicInMaterial(apartment.roomId)
+            //Удаляем у перенесённых записей связь с таблицей комнат
+            dao.deleteValueRoomIDInMaterial()
+            //Запрос - по id удалёем материалы из общей таблицы
+            dao.clearMoveMaterialBasicInMaterial(apartment.roomId)
+        }
+    }
 
 
 }
