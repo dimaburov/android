@@ -45,6 +45,7 @@ class TitleFragment : Fragment() {
 
         binding.buttonAdd.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_dataRoomFragment)
+            //Как то надо вывести значения
         }
 
         binding.buttonClear.setOnClickListener {

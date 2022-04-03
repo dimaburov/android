@@ -20,7 +20,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/radioGroup"
-            app:layout_constraintHorizontal_bias="0.613"
+            app:layout_constraintHorizontal_bias="0.733"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textWidthRoom2" />
 

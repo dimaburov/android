@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.firstprogramkotlin.database.RoomDao
 import com.example.firstprogramkotlin.database.Apartment
 import com.example.firstprogramkotlin.database.Material
+import com.example.firstprogramkotlin.databinding.FragmentDataRoomBinding
 import kotlinx.coroutines.*
 
 class DataRoomViewModel(
@@ -22,6 +23,9 @@ class DataRoomViewModel(
 //    var steps = ArrayList<Apartment>()
 
     private var roomNow = MutableLiveData<Apartment?>()
+    private var modify = MutableLiveData<Apartment?>()
+    val modifyApartament:LiveData<Apartment?>
+        get() = modify
 
     private var materialNow = MutableLiveData<Material?>()
 
@@ -47,6 +51,28 @@ class DataRoomViewModel(
         }
     }
 
+    fun inputDataModifiApartamentInRoom(binding: FragmentDataRoomBinding){
+        uiScope.launch {
+            val modifyApartament = getModifyApartament()
+            if (modifyApartament != null) {
+                binding.editHeightRoom.setText(modifyApartament.height.toString())
+                binding.editLengthRoom.setText(modifyApartament.length.toString())
+                binding.editWidthRoom.setText(modifyApartament.wight.toString())
+                if (modifyApartament.utilsMSm){
+                    binding.radioButton.isChecked = true
+                }
+                else binding.radioButton2.isChecked = true
+
+                if(modifyApartament.floorF){
+                    binding.radioButtonPar.isChecked = true
+                    binding.radioButtonPar.hasSelection()
+                    binding.editBoardSize.setText(modifyApartament.size.toString())
+                    binding.editBoardCount.setText(modifyApartament.countBoard.toString())
+                }
+                else binding.radioButtonLam.isChecked = true
+            }
+        }
+    }
     fun onClearJob(){
         onCleared()
     }
@@ -84,6 +110,12 @@ class DataRoomViewModel(
             //Добавление значения в поле кол-ва материалов
             getCountMaterialInApartament(modifyApartament)
             _navigateAfterNewRecipe.value = true
+        }
+    }
+
+    fun getCheckModifyApartament(){
+        uiScope.launch {
+            modify.value = getModifyApartament()
         }
     }
 

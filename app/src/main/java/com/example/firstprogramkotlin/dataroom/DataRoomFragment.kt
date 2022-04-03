@@ -12,9 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.firstprogramkotlin.R
+import com.example.firstprogramkotlin.database.Apartment
 import com.example.firstprogramkotlin.database.InitDatabase
 import com.example.firstprogramkotlin.databinding.FragmentDataRoomBinding
 import com.example.firstprogramkotlin.title.TitleAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DataRoomFragment : Fragment() {
     private lateinit var viewModel: DataRoomViewModel
@@ -22,17 +26,29 @@ class DataRoomFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_data_room, container, false)
 
         val binding = DataBindingUtil.inflate<FragmentDataRoomBinding>(inflater,
             R.layout.fragment_data_room, container, false)
-        //Просит содздать первый объект сделаем его пока тестовым
+
         val application = requireActivity().application
 
         val dao = InitDatabase.getInstance(application).getRoomDao()
         val viewModelFactory = DataRoomViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DataRoomViewModel::class.java)
+
+        //Если объект в редактировании вывести стартовые данные
+//        viewModel.getCheckModifyApartament()
+//        val modify = viewModel.modifyApartament
+//        if (modify != null){
+//            val room =  modify.value
+//            println("!!!!!TEST MODIFY begin ID!!")
+//            if (room != null) {
+//                println("!!!!!TEST MODIFY!! " + (room.roomId))
+//            }
+//        }
+        viewModel.inputDataModifiApartamentInRoom(binding)
+
+        //end test
 
         val adapter = AdapterMaterial(
             viewModel::deleteMaterial
