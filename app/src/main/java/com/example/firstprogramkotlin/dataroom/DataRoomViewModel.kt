@@ -67,19 +67,50 @@ class DataRoomViewModel(
             newRoom.size = size
             newRoom.utilsMSm = checkUtilsMOrSM
             newRoom.countBoard = boardCount
-            insert(newRoom)
+            //Проверяем изменяется запись ли сейчас
+            val modifyApartament = getModifyApartament()
+            //Если редактируемая запись найдена - переписываем значения
+            if (modifyApartament != null){
+                println("!!!!Запись редактируется!!!!")
+                updateModifyApartament(newRoom, modifyApartament.roomId)
+            }
+            else{
+                println("!!!!Запись не редактируется!!!!")
+                insert(newRoom)
+            }
             //Получение числа добавленных материалов в комнате
             roomNow.value = getRoomNowFromDao()
-            setIdApartament()
+            setIdApartament(modifyApartament)
             //Добавление значения в поле кол-ва материалов
-            getCountMaterialInApartament()
+            getCountMaterialInApartament(modifyApartament)
             _navigateAfterNewRecipe.value = true
         }
     }
 
-    private suspend fun getCountMaterialInApartament(){
+    //Ищем редактируемую запись комнаты
+    private suspend fun getModifyApartament():Apartment?{
+        return withContext(Dispatchers.IO){
+            val apartament = dao.getModifyApartament(true)
+            return@withContext apartament
+        }
+    }
+
+    //редактирование записи
+    private suspend fun updateModifyApartament(newRoom: Apartment, id_apartament: Long){
         withContext(Dispatchers.IO){
-            var apartament = dao.getRoomNow()
+            dao.updateModifyApartament(id_apartament, newRoom.length, newRoom.wight, newRoom.height, newRoom.floorF, newRoom.size, newRoom.countBoard, newRoom.utilsMSm, 0, false)
+        }
+    }
+
+    private suspend fun getCountMaterialInApartament(modifyApartament: Apartment?){
+        withContext(Dispatchers.IO){
+            //Последняя созданная запись
+            var  apartament = dao.getRoomNow()
+            //Если запись модифицируется то смотрим по её id
+            if (modifyApartament != null){
+                 apartament = modifyApartament
+            }
+
             var count = apartament?.let { dao.getCountMaterialInApartament(it.roomId) }
             if (count == null) {
                 count = 0
@@ -95,13 +126,6 @@ class DataRoomViewModel(
             dao.insert(newRoom)
         }
     }
-    //Написать функцию изменения данных
-//    fun onStopTracking(){
-//        uiScope.launch {
-//            val oldRoom = roomNow.value ?: return@launch
-//
-//        }
-//    }
 
     private suspend fun update(oldRoom: Apartment){
         withContext(Dispatchers.IO){
@@ -181,15 +205,18 @@ class DataRoomViewModel(
         }
     }
 
-    fun setIdApartamentIntoMaterialBasic(){
-        uiScope.launch {
-            setIdApartament()
-        }
-    }
+//    fun setIdApartamentIntoMaterialBasic(){
+//        uiScope.launch {
+//            setIdApartament()
+//        }
+//    }
 
-    private suspend fun setIdApartament(){
+    private suspend fun setIdApartament(modifyApartament: Apartment?){
         withContext(Dispatchers.IO){
             var room = roomNow.value
+            if (modifyApartament!=null){
+                room = modifyApartament
+            }
             if (room != null) {
                 dao.creadKeyMaterialBasicAndApartament(room.roomId)
             }

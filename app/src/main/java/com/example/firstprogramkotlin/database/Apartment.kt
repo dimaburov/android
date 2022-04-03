@@ -26,6 +26,7 @@ class Apartment {
     @ColumnInfo(name="utils_m_sm")
     var utilsMSm: Boolean = true
 
-    //text
     var countMaterial: Int = 0
+
+    var modifyF: Boolean = false
 }

@@ -105,4 +105,18 @@ interface RoomDao {
     @Query("DELETE FROM material_basic_room WHERE roomId = :id_room")
     fun clearMoveMaterialBasicInMaterial(id_room: Long)
 
+    //Добавляем к запси флаг редактируемости
+    @Query("UPDATE data_room SET modifyF = :modify WHERE roomId = :id_apartament")
+    fun modifyFlagApartament(id_apartament: Long, modify: Boolean)
+
+    //Ищем редактируемую запись в таблице комнат
+    @Query("SELECT * FROM data_room WHERE modifyF = :modify")
+    fun getModifyApartament(modify: Boolean): Apartment?
+
+    //Изменяем запись по передаваемым парпаметрам
+    @Query("UPDATE data_room SET modifyF = :modifyF,length = :length, wight = :wight, height = :height, floor_flag = :floorF, size = :size, count_board = :countBoard, utils_m_sm = :utilsMSm, countMaterial = :countMaterial  " +
+                "WHERE roomId = :id_apartament")
+    fun updateModifyApartament(id_apartament: Long, length: Double,wight: Double,  height: Double, floorF: Boolean,
+                               size: String,countBoard: Int , utilsMSm: Boolean, countMaterial: Int, modifyF: Boolean)
+
 }

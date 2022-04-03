@@ -98,5 +98,18 @@ class TitleViewModel(
         }
     }
 
+    //Помечаем запись как редактируемую
+    fun modifyApartament(apartment: Apartment){
+        uiScope.launch {
+            modifyApartamentTrue(apartment)
+        }
+    }
+
+    private suspend fun modifyApartamentTrue(apartment: Apartment){
+        withContext(Dispatchers.IO) {
+            dao.modifyFlagApartament(apartment.roomId, true)
+        }
+    }
+
 
 }

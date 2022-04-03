@@ -37,7 +37,8 @@ class TitleFragment : Fragment() {
         val adapter = TitleAdapter(
             viewModel::deleteApartament,
             viewModel::editApartament,
-            viewModel::getMaterialOutMaterialBasic
+            viewModel::getMaterialOutMaterialBasic,
+            viewModel::modifyApartament
         )
 
         binding.listRooms.adapter = adapter
