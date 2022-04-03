@@ -36,10 +36,10 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
             var roomObj = RoomData(item.length, item.wight, item.height, item.floorF,
                                     item.size, item.countBoard, item.utilsMSm)
             var sm_or_m = ""
-            if (item.utilsMSm) sm_or_m = "м"
-            else sm_or_m = "см"
+            if (item.utilsMSm) sm_or_m = "1м"
+            else sm_or_m = "50см"
             lengthCountWallpaper.text = "Высота " + item.height.toString() + " Длина " + item.length.toString() + " Ширина " + item.wight.toString()
-            WallpaperMaterial.text = "Кол-во рулонов " + roomObj.number_of_wallpaper_rolls() + " ширина обоев в " + sm_or_m
+            WallpaperMaterial.text = "Кол-во рулонов " + roomObj.number_of_wallpaper_rolls() + " ширина обоев " + sm_or_m
             if (item.floorF) {
                 widthLaminateLinol.text = "Кол-во ламината " + roomObj.get_count_lam()
             }
@@ -75,7 +75,6 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
             var item = data[position]
             holder.bind(item)
 
-            //test delete
             holder.deleteItemButton.setOnClickListener{deleteOnClickListener(item)}
 
             holder.countMaterial.text = "Кол-во материалов: " + item.countMaterial

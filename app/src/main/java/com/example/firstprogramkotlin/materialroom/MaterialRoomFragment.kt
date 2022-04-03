@@ -50,10 +50,6 @@ class MaterialRoomFragment : Fragment() {
                 viewModel.onSaveMaterial(
                     nameMaterial, utilsMaterial, countMaterial
                 )
-                //save material basic
-//                viewModel.onSaveMaterialBasic(
-//                    nameMaterial, utilsMaterial, countMaterial
-//                )
 
                 viewModel.navigateAfterNewRecipe.observe(viewLifecycleOwner, Observer { navigate ->
                     if (navigate!!){

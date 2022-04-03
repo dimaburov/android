@@ -37,18 +37,7 @@ class DataRoomFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(DataRoomViewModel::class.java)
 
         //Если объект в редактировании вывести стартовые данные
-//        viewModel.getCheckModifyApartament()
-//        val modify = viewModel.modifyApartament
-//        if (modify != null){
-//            val room =  modify.value
-//            println("!!!!!TEST MODIFY begin ID!!")
-//            if (room != null) {
-//                println("!!!!!TEST MODIFY!! " + (room.roomId))
-//            }
-//        }
         viewModel.inputDataModifiApartamentInRoom(binding)
-
-        //end test
 
         val adapter = AdapterMaterial(
             viewModel::deleteMaterial

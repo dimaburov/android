@@ -20,8 +20,6 @@ class DataRoomViewModel(
 
     val materials = dao.getAllMaterial()
 
-//    var steps = ArrayList<Apartment>()
-
     private var roomNow = MutableLiveData<Apartment?>()
     private var modify = MutableLiveData<Apartment?>()
     val modifyApartament:LiveData<Apartment?>
@@ -224,7 +222,7 @@ class DataRoomViewModel(
         }
     }
 
-    //TEST MATERIAL - MATERIAL BASIC
+    //TMATERIAL - MATERIAL BASIC
     fun addMaterialInMaterialBasic(){
         uiScope.launch {
             addMaterialBasic()
@@ -236,12 +234,6 @@ class DataRoomViewModel(
             dao.addMaterialIntoMaterialBasic()
         }
     }
-
-//    fun setIdApartamentIntoMaterialBasic(){
-//        uiScope.launch {
-//            setIdApartament()
-//        }
-//    }
 
     private suspend fun setIdApartament(modifyApartament: Apartment?){
         withContext(Dispatchers.IO){

@@ -23,8 +23,6 @@ class TitleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_title, container, false)
         val application = requireActivity().application
 
         val dao = InitDatabase.getInstance(application).getRoomDao()
@@ -45,7 +43,6 @@ class TitleFragment : Fragment() {
 
         binding.buttonAdd.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_dataRoomFragment)
-            //Как то надо вывести значения
         }
 
         binding.buttonClear.setOnClickListener {

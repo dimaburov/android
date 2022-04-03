@@ -48,7 +48,6 @@ class AdapterMaterial(
         var item = data[position]
         holder.bind(item)
 
-        //test delete
         holder.buttonDeleteItem.setOnClickListener{deleteOnClickListener(item)}
 
     }
