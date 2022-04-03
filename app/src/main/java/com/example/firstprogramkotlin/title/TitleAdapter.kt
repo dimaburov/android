@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -29,6 +30,7 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
         private val WallpaperMaterial: TextView = itemView.findViewById(R.id.length_count_wallpaper)
         val deleteItemButton:ImageButton = itemView.findViewById(R.id.deleteItemButton)
         val updateItemButton:ImageButton = itemView.findViewById(R.id.updateItemButton)
+        val countMaterial:TextView = itemView.findViewById(R.id.textCountMaterial)
         //Записываем в title данные
         fun bind(item: Apartment) {
             var roomObj = RoomData(item.length, item.wight, item.height, item.floorF,
@@ -73,18 +75,11 @@ class TitleViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
 
             //test delete
             holder.deleteItemButton.setOnClickListener{deleteOnClickListener(item)}
-//            val layoutInflater = LayoutInflater.from(ViewGroup.context)
-//            val view = layoutInflater
-//                .inflate(R.layout.room_item_fragment, parent, false)
-            //test изменение
-//            holder.updateItemButton.setOnClickListener{editOnClickListener(item)}
 
+            holder.countMaterial.text = "Кол-во материалов: " + item.countMaterial
             holder.updateItemButton.setOnClickListener {
-//                editOnClickListener(item)
                 val action = R.id.action_titleFragment_to_dataRoomFragment
                 it.findNavController().navigate(action)
-                //Тестово задаём поле
-//                R.id.editHeightRoom = item.height
             }
         }
 

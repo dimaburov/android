@@ -7,34 +7,35 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="46dp"
-        android:layout_height="88dp"
+        android:layout_width="47dp"
+        android:layout_height="107dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <ImageButton
-        android:id="@+id/deleteItemButton"
-        android:layout_width="43dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="16dp"
-        android:src="@android:drawable/btn_dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
-        app:layout_constraintStart_toEndOf="@+id/length_count_wallpaper"
-        app:layout_constraintTop_toBottomOf="@+id/updateItemButton" />
-
-    <ImageButton
         android:id="@+id/updateItemButton"
         android:layout_width="40dp"
         android:layout_height="44dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toEndOf="@+id/length_count_wallpaper"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/deleteItemButton"
+        android:layout_width="43dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/btn_dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toEndOf="@+id/length_count_wallpaper"
+        app:layout_constraintTop_toBottomOf="@+id/updateItemButton" />
 
     <TextView
         android:id="@+id/length_count_wallpaper"
@@ -50,8 +51,8 @@
 
     <TextView
         android:id="@+id/lamin_lin"
-        android:layout_width="248dp"
-        android:layout_height="25dp"
+        android:layout_width="253dp"
+        android:layout_height="22dp"
         android:layout_marginTop="8dp"
         android:paddingLeft="2dp"
         android:paddingTop="2dp"
@@ -71,6 +72,18 @@
         android:text="text"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCountMaterial"
+        android:layout_width="254dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="2dp"
+        android:text="text"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/lamin_lin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

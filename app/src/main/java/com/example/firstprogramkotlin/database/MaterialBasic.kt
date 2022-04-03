@@ -10,6 +10,8 @@ class MaterialBasic {
     @ColumnInfo(name="id_material")
     var materialId: Long = 0L
 
+    var roomId: Long = 0L
+
     var materialName: String = ""
 
     var materialUtils: String = ""

@@ -95,8 +95,11 @@ class DataRoomFragment : Fragment() {
                 //test
                 //test связь двух таблиц
                 viewModel.addMaterialInMaterialBasic()
-//            viewModel.onClearJob()
+                //Добавляем ключ созданной комнаты в материалы
+                //Получаем списко материалов с пустым ключом комнаты и вставляем ключ последней созданной комнаты
+                //viewModel.setIdApartamentIntoMaterialBasic()
                 viewModel.onClearMaterial()
+
             }
             else {
                 val duration = Toast.LENGTH_SHORT

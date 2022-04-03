@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "data_room")
 class Apartment {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id")
     var roomId: Long = 0L
 
     var length: Double = 0.0
@@ -26,4 +25,7 @@ class Apartment {
 
     @ColumnInfo(name="utils_m_sm")
     var utilsMSm: Boolean = true
+
+    //text
+    var countMaterial: Int = 0
 }

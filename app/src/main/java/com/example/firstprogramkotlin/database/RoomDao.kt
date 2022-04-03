@@ -1,5 +1,6 @@
 package com.example.firstprogramkotlin.database
 
+import androidx.annotation.LongDef
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
@@ -12,13 +13,13 @@ interface RoomDao {
     @Update
     fun update(room: Apartment)
 
-    @Query("SELECT * FROM data_room WHERE id = :key")
+    @Query("SELECT * FROM data_room WHERE roomId = :key")
     fun get(key: Long): Apartment?
 
-    @Query("SELECT * FROM data_room ORDER BY id DESC")
+    @Query("SELECT * FROM data_room ORDER BY roomId DESC")
     fun getAllRoom(): LiveData<List<Apartment>>
 
-    @Query("SELECT * FROM data_room ORDER BY id DESC LIMIT 1")
+    @Query("SELECT * FROM data_room ORDER BY roomId DESC LIMIT 1")
     fun getRoomNow(): Apartment?
 
     @Query("DELETE FROM data_room")
@@ -26,6 +27,10 @@ interface RoomDao {
 
     @Delete
     fun deleteItem(apartment: Apartment)
+
+    //Тестовое добавление изменения кол-ва материалов
+    @Query("UPDATE data_room SET countMaterial = :count WHERE roomId = :id")
+    fun setCountMaterial(id: Long, count:Int)
 
     //  base - Material
     @Insert
@@ -75,5 +80,17 @@ interface RoomDao {
     @Query("INSERT INTO material_basic_room " +
             "SELECT * FROM material_room")
     fun addMaterialIntoMaterialBasic()
+
+    //Пробник связи между таблицами
+
+    @Query("SELECT * FROM material_basic_room WHERE id_material = :id_apartament")
+    fun getSchoolAndDirectorWithSchoolName(id_apartament: Long): LiveData<List<MaterialBasic>>
+
+    @Query("UPDATE material_basic_room SET roomId = :id_apartament WHERE roomId = 0")
+    fun creadKeyMaterialBasicAndApartament(id_apartament: Long)
+
+    //Определяем кол-во материалов добавленных к комнате
+    @Query("SELECT COUNT(*) FROM material_basic_room WHERE roomId = :id_apartament")
+    fun getCountMaterialInApartament(id_apartament: Long):Int
 
 }

@@ -68,8 +68,25 @@ class DataRoomViewModel(
             newRoom.utilsMSm = checkUtilsMOrSM
             newRoom.countBoard = boardCount
             insert(newRoom)
-//            steps.add(newRoom)
+            //Получение числа добавленных материалов в комнате
+            roomNow.value = getRoomNowFromDao()
+            setIdApartament()
+            //Добавление значения в поле кол-ва материалов
+            getCountMaterialInApartament()
             _navigateAfterNewRecipe.value = true
+        }
+    }
+
+    private suspend fun getCountMaterialInApartament(){
+        withContext(Dispatchers.IO){
+            var apartament = dao.getRoomNow()
+            var count = apartament?.let { dao.getCountMaterialInApartament(it.roomId) }
+            if (count == null) {
+                count = 0
+            }
+            if (apartament != null) {
+                dao.setCountMaterial(apartament.roomId, count)
+            }
         }
     }
 
@@ -161,6 +178,21 @@ class DataRoomViewModel(
     private suspend fun addMaterialBasic(){
         withContext(Dispatchers.IO){
             dao.addMaterialIntoMaterialBasic()
+        }
+    }
+
+    fun setIdApartamentIntoMaterialBasic(){
+        uiScope.launch {
+            setIdApartament()
+        }
+    }
+
+    private suspend fun setIdApartament(){
+        withContext(Dispatchers.IO){
+            var room = roomNow.value
+            if (room != null) {
+                dao.creadKeyMaterialBasicAndApartament(room.roomId)
+            }
         }
     }
 }
